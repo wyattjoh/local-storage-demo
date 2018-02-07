@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Local Storage Demo</title>
+    <style type="text/css">pre { padding: 20px; background: black; }</style>
+</head>
+<body>
+    <pre id="textarea"></pre>
+    <br/>
+    <button type="button" id="edit">Edit with Popup</button>
+    <script type="text/javascript">
+        var textarea = document.getElementById('textarea');
+        var edit = document.getElementById('edit');
+        edit.addEventListener('click', function(e) {
+            window.open('/edit.html', '', 'width=500,height=500');
+        }, false);
+
+        function reloadItem() {
+            var item = localStorage.getItem('item');
+
+            if (!item || item === '') {
+                item = '<none>';
+                textarea.style.color = 'red';
+            } else {
+                textarea.style.color = 'white';
+            }
+
+            textarea.innerText = item;
+        };
+
+        reloadItem();
+    </script>
+</body>
+</html>
